@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_color"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
 
     <TextView
@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="30dp"
+        android:contentDescription="@string/menu_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_menu" />
@@ -72,10 +73,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2"
+            android:autofillHints="@string/auto_fill_hint"
             android:background="@color/background_grey"
             android:ems="10"
             android:gravity="center_vertical|start"
-            android:inputType="number"
+            android:hint="@string/auto_fill_hint"
+            android:inputType="numberDecimal"
             android:paddingStart="10dp"
             android:paddingLeft="10dp"
             android:paddingEnd="10dp"
@@ -94,7 +97,6 @@
             android:layout_weight="5"
             android:background="@color/background_grey"
             android:gravity="center"
-            android:text="EUR"
             android:textColor="@color/currency_text_view_color"
             android:textSize="24sp" />
 
@@ -118,10 +120,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2"
+            android:autofillHints="@string/auto_fill_hint"
             android:background="@color/background_grey"
             android:ems="10"
             android:gravity="center_vertical|start"
-            android:inputType="number"
+            android:hint="@string/auto_fill_hint"
+            android:inputType="numberDecimal"
             android:paddingStart="10dp"
             android:paddingLeft="10dp"
             android:paddingEnd="10dp"
@@ -140,7 +144,6 @@
             android:layout_weight="5"
             android:background="@color/background_grey"
             android:gravity="center"
-            android:text="PLN"
             android:textColor="@color/currency_text_view_color"
             android:textSize="24sp" />
 
@@ -170,6 +173,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
             android:background="@color/background_color"
+            android:contentDescription="@string/swap_button_content_description"
             android:paddingStart="5dp"
             android:paddingEnd="5dp"
             android:src="@drawable/ic_convert" />
@@ -191,7 +195,7 @@
         android:background="@color/signUpColor"
         android:fontFamily="@font/asap"
         android:padding="5dp"
-        android:text="Convert"
+        android:text="@string/convert"
         android:textAllCaps="false"
         android:textColor="@color/background_color"
         android:textSize="20sp"

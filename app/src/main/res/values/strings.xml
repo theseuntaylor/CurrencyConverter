@@ -4,6 +4,10 @@
     <string name="sign_up">Sign Up</string>
     <string name="currency_calculator">Currency\nCalculator</string>
     <string name="full_stop">.</string>
+    <string name="swap_button_content_description">Swaps the value of the spinners</string>
+    <string name="auto_fill_hint">1.000</string>
+    <string name="convert">Convert</string>
+    <string name="menu_icon">menu icon</string>
 
     <string-array name="from_currencies">
         <item>USD</item>
@@ -14,10 +18,10 @@
     </string-array>
 
     <string-array name="to_currencies">
-        <item>NGN</item>
         <item>USD</item>
         <item>GBP</item>
         <item>JPY</item>
         <item>CAD</item>
+        <item>NGN</item>
     </string-array>
 </resources>

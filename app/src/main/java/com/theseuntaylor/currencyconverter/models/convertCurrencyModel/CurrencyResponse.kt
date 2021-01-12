@@ -1,0 +1,3 @@
+package com.theseuntaylor.currencyconverter.models.convertCurrencyModel
+
+class CurrencyResponse

@@ -1,11 +1,15 @@
-package com.theseuntaylor.currencyconverter
+package com.theseuntaylor.currencyconverter.activities
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.theseuntaylor.currencyconverter.R
 
 class MainActivity : AppCompatActivity() {
+
+    val TAG: String = "MainActivity TAG"
 
     private lateinit var toSpinner: Spinner
     private lateinit var toTextView: TextView
@@ -14,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var fromTextView: TextView
 
     private lateinit var swapButton: ImageButton
+    private lateinit var convertButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -24,9 +29,14 @@ class MainActivity : AppCompatActivity() {
         setUpSpinners()
         setViews()
         swapViews(swapButton, fromSpinner, toSpinner)
+
+        convertButton.setOnClickListener {
+            Log.i(TAG, "onCreate: button pressed")
+        }
     }
 
     private fun findViews() {
+        convertButton = findViewById(R.id.convert_button)
         toSpinner = findViewById(R.id.toSpinner)
         toTextView = findViewById(R.id.currency_to_textView)
         fromSpinner = findViewById(R.id.fromSpinner)
@@ -83,8 +93,16 @@ class MainActivity : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
+
                 val text = parent?.getItemAtPosition(position).toString()
                 fromTextView.text = text
+
+                Log.e(TAG, "onItemSelected: item selected is $text", null)
+                Log.e(
+                    TAG,
+                    "onItemSelected: item selected number is ${parent?.getPositionForView(view)}",
+                    null
+                )
             }
         }
     }
