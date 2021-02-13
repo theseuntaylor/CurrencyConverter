@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#000</color>
     <color name="colorAccent">#f1f1f1</color>
 
-    <color name="signUpColor"> #01b252</color>
+    <color name="signUpColor">#01b252</color>
     <color name="background_grey">#D3D0D0</color>
     <color name="background_color">#f1f1f1</color>
     <color name="currency_text_view_color">#676666</color>

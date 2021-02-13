@@ -3,5 +3,11 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/asap</item>
         <item>@font/asap_bold</item>
+        <item>@font/poppins</item>
+        <item>@font/poppins_bold</item>
+        <item>@font/poppins_light</item>
+        <item>@font/raleway</item>
+        <item>@font/raleway_bold</item>
+        <item>@font/raleway_thin</item>
     </array>
 </resources>

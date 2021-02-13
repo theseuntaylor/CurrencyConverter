@@ -14,4 +14,9 @@
         <item name="android:padding">5dp</item>
     </style>
 
+    <style name="text_style">
+        <item name="font">@font/raleway_thin</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
 </resources>

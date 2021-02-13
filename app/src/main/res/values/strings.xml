@@ -4,6 +4,7 @@
     <string name="sign_up">Sign Up</string>
     <string name="currency_calculator">Currency\nCalculator</string>
     <string name="full_stop">.</string>
+    <string name="convert">Convert</string>
 
     <string-array name="from_currencies">
         <item>USD</item>
