@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/splashScreenFragment"
+    android:id="@+id/app_nav">
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="com.theseuntaylor.currencyconverter.Fragments.SplashScreenFragment"
+        android:label="splash_screen_fragment"
+        tools:layout="@layout/fragment_splash_screen">
+        <action
+            android:id="@+id/action_splashScreenFragment_to_homeFragment"
+            app:enterAnim="@anim/top_animation"
+            app:exitAnim="@anim/bottom_anim"
+            app:popUpToInclusive="true"
+            app:popEnterAnim="@anim/fragment_fade_enter"
+            app:popExitAnim="@anim/fragment_fade_exit"
+            app:destination="@id/homeFragment"/>
+    </fragment>
+
+    <fragment android:id="@+id/homeFragment"
+        android:name="com.theseuntaylor.currencyconverter.Fragments.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_homeFragment_to_anywhere"
+            app:popUpToInclusive="true"/>
+
+    </fragment>
+
+
+</navigation>
