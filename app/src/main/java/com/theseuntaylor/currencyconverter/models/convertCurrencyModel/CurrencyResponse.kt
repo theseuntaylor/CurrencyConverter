@@ -1,3 +1,14 @@
 package com.theseuntaylor.currencyconverter.models.convertCurrencyModel
 
-class CurrencyResponse
+import java.io.Serializable
+
+class CurrencyResponse : Serializable {
+
+    var result: Double? = null
+
+}
+
+
+data class response(
+    val USD: Double
+)

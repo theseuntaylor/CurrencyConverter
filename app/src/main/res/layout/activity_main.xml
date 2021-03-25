@@ -18,6 +18,7 @@
         android:text="@string/sign_up"
         android:textColor="@color/signUpColor"
         android:textSize="24sp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,6 +29,7 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="30dp"
         android:contentDescription="@string/menu_icon"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_menu" />
@@ -37,10 +39,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/asap_bold"
         android:text="@string/currency_calculator"
-        android:textColor="#185DFA"
+        android:textColor="@color/blue_colour"
         android:textSize="32sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -170,12 +172,15 @@
             android:id="@+id/swap_spinners_button"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:background="@color/background_color"
+            android:layout_marginStart="7dp"
+            android:layout_marginEnd="7dp"
+            android:background="@color/background_grey"
             android:contentDescription="@string/swap_button_content_description"
+            android:elevation="6dp"
             android:paddingStart="5dp"
+            android:paddingLeft="5dp"
             android:paddingEnd="5dp"
+            android:paddingRight="5dp"
             android:src="@drawable/ic_convert" />
 
         <Spinner
@@ -187,6 +192,7 @@
 
     <Button
         android:id="@+id/convert_button"
+
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
@@ -202,5 +208,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linear_layout_2" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="The rate being used is 0.57 usd to ngn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/convert_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
