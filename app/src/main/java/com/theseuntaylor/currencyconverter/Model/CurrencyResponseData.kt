@@ -74,7 +74,7 @@ data class QueryResponse(
 
 data class InfoResponse(
     @SerializedName("timestamp")
-    val timestamp: Timestamp,
+    val timestamp: Timestamp? = null,
 
     @SerializedName("rate")
     val rate: Double,

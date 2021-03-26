@@ -28,6 +28,7 @@ interface CurrencyApiService {
                                      @Query("compact") compact: String = "ultra"): retrofit2.Response<Map<String,Double>>
 
 
+
     /**
      * Companion object to create the GithubApiService
      */
@@ -77,5 +78,8 @@ fun getLoggerInterceptor(): Interceptor {
         Timber.d(it)
     })
     logger.level = HttpLoggingInterceptor.Level.BASIC
+    //logger.level = HttpLoggingInterceptor.Level.BODY
+    logger.level = HttpLoggingInterceptor.Level.HEADERS
+
     return logger
 }

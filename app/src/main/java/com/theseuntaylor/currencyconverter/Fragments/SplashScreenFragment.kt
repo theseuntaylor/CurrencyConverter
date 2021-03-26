@@ -42,7 +42,7 @@ class SplashScreenFragment : Fragment(), CoroutineScope {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding = FragmentSplashScreenBinding.inflate(layoutInflater)
+        val binding =  FragmentSplashScreenBinding.inflate(layoutInflater)
 
         return binding.root
     }
@@ -50,7 +50,7 @@ class SplashScreenFragment : Fragment(), CoroutineScope {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         launch {
-            delay(3000)
+            delay(2000)
             withContext(Dispatchers.Main){
                 findNavController().navigate(R.id.action_splashScreenFragment_to_homeFragment)
             }

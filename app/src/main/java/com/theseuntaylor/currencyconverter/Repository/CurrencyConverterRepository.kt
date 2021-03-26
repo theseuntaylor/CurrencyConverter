@@ -4,8 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.widget.Toast
 import com.theseuntaylor.currencyconverter.BuildConfig
-import com.theseuntaylor.currencyconverter.Model.CurrencyConverterResponse
-import com.theseuntaylor.currencyconverter.Model.Result
+import com.theseuntaylor.currencyconverter.Model.*
 import com.theseuntaylor.currencyconverter.NetworkService.ApiNetworkConnector
 import com.theseuntaylor.currencyconverter.NetworkService.ApiService
 import com.theseuntaylor.currencyconverter.NetworkService.CurrencyApiService
@@ -23,11 +22,13 @@ class CurrencyConverterRepository private constructor(application: Application) 
     //private var instance = create()
     private var mContext: Context
     private var mApiService: CurrencyApiService
+    private var mCurrencyApiService: ApiService
     private val coroutineContext: CoroutineContext get() = Dispatchers.IO
 
     init {
         this.mContext = application.applicationContext
         mApiService = CurrencyApiService.create()
+        mCurrencyApiService = ApiService.create()
     }
 
 
@@ -66,6 +67,70 @@ class CurrencyConverterRepository private constructor(application: Application) 
             } catch (t: Throwable) {
                 if (t !is CancellationException) {
                     return@withContext Result.Exception(t)
+                } else {
+                    throw t
+                }
+            }
+
+        }
+
+    }
+
+    suspend fun getSymbolResult(
+    ): SymbolResult {
+        return withContext(Dispatchers.IO) {
+            Timber.tag("I got here").d("Here we are")
+            try {
+                val response = mCurrencyApiService.getCurrencySymbol()
+                if (response.isSuccessful) {
+                    if(response.body() != null){
+                        Timber.tag("Conversion Completed").d(response.message())
+                        val convertedModel: CurrencySymbolResponse = response.body()!!
+                        //val amountConverted = (amount * convertedModel.getValue(currencies))
+                        return@withContext SymbolResult.Success(convertedModel)
+                    }
+                    else{
+                        return@withContext SymbolResult.Failure(response.errorBody())
+                    }
+                } else {
+                    return@withContext SymbolResult.NetworkError(true)
+                }
+            } catch (t: Throwable) {
+                if (t !is CancellationException) {
+                    return@withContext SymbolResult.Exception(t)
+                } else {
+                    throw t
+                }
+            }
+
+        }
+
+    }
+
+    suspend fun getConversionResult(
+        from: String,
+        to: String,
+        amount: Int
+    ): ConversionResult {
+        return withContext(Dispatchers.IO) {
+            Timber.tag("I got here").d("Here we are")
+            try {
+                val response = mCurrencyApiService.getConvertedExchange(from, to, amount)
+                if (response.isSuccessful) {
+                    if(response.body() != null){
+                        Timber.tag("Conversion Completed").d(response.message())
+                        val convertedModel: CurrencyConversionResponse = response.body()!!
+                        return@withContext ConversionResult.Success(convertedModel)
+                    }
+                    else{
+                        return@withContext ConversionResult.Failure(response.errorBody())
+                    }
+                } else {
+                    return@withContext ConversionResult.NetworkError(true)
+                }
+            } catch (t: Throwable) {
+                if (t !is CancellationException) {
+                    return@withContext ConversionResult.Exception(t)
                 } else {
                     throw t
                 }

@@ -4,8 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.theseuntaylor.currencyconverter.Model.CurrencyConverterResponse
-import com.theseuntaylor.currencyconverter.Model.Result
+import com.theseuntaylor.currencyconverter.Model.*
 import com.theseuntaylor.currencyconverter.Repository.CurrencyConverterRepository
 import kotlinx.coroutines.*
 import java.lang.reflect.Type
@@ -28,9 +27,17 @@ class CurrencyCoverterVM(application: Application) : AndroidViewModel(applicatio
 
     private var currencyConverterRepository : CurrencyConverterRepository
 
-    private var _mCurrencyConverterResponse: MutableLiveData<Result>
+    private var _mCurrencyConverterResponse: MutableLiveData<Event<Result>>
 
-    var  mCurrencyConverterResponse: LiveData<Result>
+    var  mCurrencyConverterResponse: LiveData<Event<Result>>
+
+    private var _mCurrencyConversionResponse: MutableLiveData<Event<ConversionResult>>
+
+    var  mCurrencyConversionResponse: LiveData<Event<ConversionResult>>
+
+    private var _mCurrencySymbolResponse: MutableLiveData<Event<SymbolResult>>
+
+    var  mCurrencySymbolResponse: LiveData<Event<SymbolResult>>
 
     /**
      * init{} is called immediately when this ViewModel is created.
@@ -42,15 +49,34 @@ class CurrencyCoverterVM(application: Application) : AndroidViewModel(applicatio
         _mCurrencyConverterResponse = MutableLiveData()
         mCurrencyConverterResponse = _mCurrencyConverterResponse
 
+        _mCurrencyConversionResponse = MutableLiveData()
+        mCurrencyConversionResponse = _mCurrencyConversionResponse
+
+        _mCurrencySymbolResponse =  MutableLiveData()
+        mCurrencySymbolResponse = _mCurrencySymbolResponse
+
     }
 
 
     fun convertAmount(currencies: String,
                       amount: Int){
         viewModelScope.launch {
-
             val result = currencyConverterRepository.getExchangeResult(currencies,amount)
-            _mCurrencyConverterResponse.postValue(result)
+            _mCurrencyConverterResponse.postValue(Event(result))
+        }
+    }
+
+    fun getSymbol(){
+        viewModelScope.launch {
+            val result = currencyConverterRepository.getSymbolResult()
+            _mCurrencySymbolResponse.postValue(Event(result))
+        }
+    }
+
+    fun convertAmountAndGetRate(from: String, to: String, amount: Int){
+        viewModelScope.launch {
+            val result = currencyConverterRepository.getConversionResult(from, to, amount)
+            _mCurrencyConversionResponse.postValue(Event(result))
         }
     }
 

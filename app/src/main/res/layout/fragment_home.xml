@@ -163,11 +163,16 @@
                 android:layout_weight="1"
                 android:spinnerMode="dropdown" />
 
-            <ImageView
+            <br.com.simplepass.loadingbutton.customViews.CircularProgressImageButton
+                android:id="@+id/swapButton"
                 android:layout_width="wrap_content"
+                android:background="@color/background_color"
                 android:layout_height="50dp"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
+                app:spinning_bar_width="4dp"
+                app:spinning_bar_color="@color/signUpColor"
+                app:spinning_bar_padding="6dp"
                 android:src="@drawable/ic_convert" />
 
             <Spinner
@@ -191,6 +196,10 @@
             android:textAllCaps="false"
             android:textColor="@color/background_color"
             android:textSize="20sp"
+            app:spinning_bar_width="4dp"
+            app:spinning_bar_color="@color/background_color"
+            app:spinning_bar_padding="6dp"
+            app:initialCornerAngle="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/linear_layout_2" />
@@ -244,6 +253,17 @@
             android:layout_margin="4dp"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="180dp" />
+
+        <TextView
+            android:id="@+id/rateResultView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textSize="12sp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/convert_button" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
