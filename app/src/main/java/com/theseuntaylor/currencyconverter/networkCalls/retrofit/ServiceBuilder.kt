@@ -1,4 +1,4 @@
-package com.theseuntaylor.currencyconverter.rest
+package com.theseuntaylor.currencyconverter.networkCalls.retrofit
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

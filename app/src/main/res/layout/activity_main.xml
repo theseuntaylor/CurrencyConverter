@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_color"
-    tools:context=".activities.MainActivity">
+    tools:context=".view.MainActivity">
 
 
     <TextView
@@ -210,12 +210,13 @@
         app:layout_constraintTop_toBottomOf="@id/linear_layout_2" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/conversion_details_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:text="The rate being used is 0.57 usd to ngn"
+        android:fontFamily="@font/asap_bold"
+        android:text=""
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/convert_button" />
 
