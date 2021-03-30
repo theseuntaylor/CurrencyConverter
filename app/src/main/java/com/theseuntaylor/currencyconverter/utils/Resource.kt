@@ -14,7 +14,7 @@ class Resource<T> private constructor(
             return Resource(Status.SUCCESS, null, data)
         }
 
-        fun <T> error(msg: String?, data: T?): Resource<T> {
+        fun <T> error(msg: String?): Resource<T> {
             return Resource(Status.ERROR, msg, null)
         }
 

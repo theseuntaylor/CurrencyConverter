@@ -11,7 +11,6 @@ import retrofit2.Response
 
 object ConvertCurrenciesRepository {
 
-    val TAG = "Convert Currency"
     var fromValue: MutableLiveData<Resource<ConvertCurrencyResponse>> = MutableLiveData()
 
     fun convertCurrencies(
@@ -37,7 +36,7 @@ object ConvertCurrenciesRepository {
             }
 
             override fun onFailure(call: Call<ConvertCurrencyResponse>, t: Throwable) {
-                fromValue.value = Resource.error(t.message, null)
+                fromValue.value = Resource.error(t.message)
             }
 
         })

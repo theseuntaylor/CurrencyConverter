@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import br.com.simplepass.loadingbutton.customViews.CircularProgressButton
 import com.theseuntaylor.currencyconverter.R
 import com.theseuntaylor.currencyconverter.utils.Resource
 import com.theseuntaylor.currencyconverter.utils.Utils
@@ -31,13 +32,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var fromTextView: TextView
 
     private lateinit var swapButton: ImageButton
-    private lateinit var convertButton: Button
+    private lateinit var convertButton: CircularProgressButton
 
     private var bottomCurrency = ""
     private var topCurrency = ""
 
-    private lateinit var currencyObserver: androidx.lifecycle.Observer<ArrayList<String>>
-    //private var currencies: ArrayList<String> = ArrayList()
+    // private lateinit var currencyObserver: androidx.lifecycle.Observer<ArrayList<String>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -77,6 +77,8 @@ class MainActivity : AppCompatActivity() {
             if (fromValue.isEmpty()) {
                 Utils.showToast("Please put in a valid input", this)
             } else {
+                convertButton.startMorphAnimation()
+
                 convertCurrencies(fromValue)
             }
         }
@@ -155,14 +157,16 @@ class MainActivity : AppCompatActivity() {
             .getConvertedCurrencies(topCurrency, bottomCurrency, fromValueToDouble)
             .observe(this, {
 
+                convertButton.revertAnimation()
+
                 when (it.status) {
                     Resource.Status.SUCCESS -> {
                         toEditText.setText(it.data?.result.toString())
                         detailsTextView.text =
                             "The rate being used is " +
                                     "${it.data?.info?.rate} " +
-                                    "${it.data?.query?.fromCurrency} to 1" +
-                                    " ${it.data?.query?.toCurrency}"
+                                    "${it.data?.query?.toCurrency} to 1" +
+                                    " ${it.data?.query?.fromCurrency}"
                     }
                     Resource.Status.LOADING -> {
                     }
