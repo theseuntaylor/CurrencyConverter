@@ -6,8 +6,10 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+import com.google.android.material.snackbar.Snackbar
 import com.theseuntaylor.currencyconverter.R
 import com.theseuntaylor.currencyconverter.utils.Resource
 import com.theseuntaylor.currencyconverter.utils.Utils
@@ -68,14 +70,44 @@ class MainActivity : AppCompatActivity() {
 
             if (topCurrency.isEmpty() || bottomCurrency.isEmpty()) {
 
-                Utils.showToast("Please put in a valid input", this)
+                val snackBar =
+                    Snackbar.make(it, "Please put in a valid input", Snackbar.LENGTH_LONG)
+                val snackBarView = snackBar.view
+                snackBarView.setBackgroundColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.snackBar_color
+                    )
+                )
+                val textView =
+                    snackBarView.findViewById(com.google.android.material.R.id.snackbar_text) as TextView
+
+                textView.setTextColor(ContextCompat.getColor(context, R.color.background_color))
+                snackBar.show()
+
                 return@setOnClickListener
             }
 
             val fromValue = fromEditText.text.toString()
 
             if (fromValue.isEmpty()) {
-                Utils.showToast("Please put in a valid input", this)
+
+                val snackBar =
+                    Snackbar.make(it, "Please put in a value (e.g. 1.6180)", Snackbar.LENGTH_LONG)
+                val snackBarView = snackBar.view
+                snackBarView.setBackgroundColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.snackBar_color
+                    )
+                )
+
+                val textView =
+                    snackBarView.findViewById(com.google.android.material.R.id.snackbar_text) as TextView
+                textView.setTextColor(ContextCompat.getColor(context, R.color.background_color))
+                snackBar.show()
+
+
             } else {
                 convertButton.startMorphAnimation()
 

@@ -122,6 +122,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2"
+            android:enabled="false"
+            android:focusable="false"
             android:autofillHints="@string/auto_fill_hint"
             android:background="@color/background_grey"
             android:ems="10"
