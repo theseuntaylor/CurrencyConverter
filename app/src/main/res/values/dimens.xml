@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="thirty_dp">30dp</dimen>
+    <dimen name="sanck_padding">160dp</dimen>
+</resources>

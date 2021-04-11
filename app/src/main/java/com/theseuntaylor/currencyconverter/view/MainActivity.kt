@@ -71,17 +71,13 @@ class MainActivity : AppCompatActivity() {
             if (topCurrency.isEmpty() || bottomCurrency.isEmpty()) {
 
                 val snackBar =
-                    Snackbar.make(it, "Please put in a valid input", Snackbar.LENGTH_LONG)
+                    Snackbar.make(it, "Just hold on a bit. :)", Snackbar.LENGTH_LONG)
                 val snackBarView = snackBar.view
-                snackBarView.setBackgroundColor(
-                    ContextCompat.getColor(
-                        context,
-                        R.color.snackBar_color
-                    )
-                )
+
                 val textView =
                     snackBarView.findViewById(com.google.android.material.R.id.snackbar_text) as TextView
-
+                textView.compoundDrawablePadding =
+                    context.resources.getDimensionPixelOffset(R.dimen.sanck_padding)
                 textView.setTextColor(ContextCompat.getColor(context, R.color.background_color))
                 snackBar.show()
 
@@ -95,15 +91,10 @@ class MainActivity : AppCompatActivity() {
                 val snackBar =
                     Snackbar.make(it, "Please put in a value (e.g. 1.6180)", Snackbar.LENGTH_LONG)
                 val snackBarView = snackBar.view
-                snackBarView.setBackgroundColor(
-                    ContextCompat.getColor(
-                        context,
-                        R.color.snackBar_color
-                    )
-                )
 
                 val textView =
-                    snackBarView.findViewById(com.google.android.material.R.id.snackbar_text) as TextView
+                    snackBarView.findViewById<TextView>(R.id.snackbar_text)
+
                 textView.setTextColor(ContextCompat.getColor(context, R.color.background_color))
                 snackBar.show()
 
