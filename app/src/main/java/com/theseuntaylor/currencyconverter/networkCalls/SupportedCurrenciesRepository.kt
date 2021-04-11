@@ -14,6 +14,7 @@ import retrofit2.Response
 object SupportedCurrenciesRepository {
 
     val TAG: String = "Currency Repo"
+
     var currencies: MutableLiveData<ArrayList<String>>? = MutableLiveData<ArrayList<String>>()
 
     var anotherCurrencyList: ArrayList<String> = ArrayList()
@@ -24,7 +25,9 @@ object SupportedCurrenciesRepository {
         val call = getSymbols.getSymbols()
 
         call.enqueue(object : Callback<JsonObject> {
+
             override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+
                 if (response.isSuccessful) {
 
                     val jsonString: String = response.body().toString()

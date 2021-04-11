@@ -11,13 +11,15 @@ import retrofit2.Response
 
 object ConvertCurrenciesRepository {
 
-    var fromValue: MutableLiveData<Resource<ConvertCurrencyResponse>> = MutableLiveData()
+    private lateinit var fromValue: MutableLiveData<Resource<ConvertCurrencyResponse>>
 
     fun convertCurrencies(
         from: String,
         to: String,
         amount: Double
     ): MutableLiveData<Resource<ConvertCurrencyResponse>> {
+
+        fromValue = MutableLiveData()
 
         val convertCurrency = ServiceBuilder.getCurrencyList(CurrenciesInterface::class.java)
         val call = convertCurrency.convertCurrencies(from, to, amount)

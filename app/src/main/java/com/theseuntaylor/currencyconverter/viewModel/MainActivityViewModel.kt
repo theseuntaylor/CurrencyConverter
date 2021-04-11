@@ -9,12 +9,16 @@ import com.theseuntaylor.currencyconverter.utils.Resource
 
 
 class MainActivityViewModel : ViewModel() {
+
     private var repository = SupportedCurrenciesRepository
     private var convertRepository = ConvertCurrenciesRepository
 
-    var conversionResponse: MutableLiveData<Resource<ConvertCurrencyResponse>> =
+    var conversionResponse:
+            MutableLiveData<Resource<ConvertCurrencyResponse>> =
         MutableLiveData<Resource<ConvertCurrencyResponse>>()
+
     var listOfCurrencies: MutableLiveData<ArrayList<String>>? = MutableLiveData<ArrayList<String>>()
+
     var currencies = java.util.ArrayList<String>()
 
     fun getConvertedCurrencies(
